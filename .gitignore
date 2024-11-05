@@ -1,2 +1,3 @@
 /.idea/
 /tuft_lac/tuft_lac/config.py
+/tuft_lac/db.sqlite3
