@@ -16,7 +16,7 @@ class State(models.Model):
 
 
 class Record(models.Model):
-    machine = models.ForeignKey(Machine, on_delete=models.CASCADE)
+    machine = models.ForeignKey(Machine, on_delete=models.CASCADE, related_name='records')
     states = models.ManyToManyField(State)
     datetime = models.DateTimeField(auto_now_add=True)
 
