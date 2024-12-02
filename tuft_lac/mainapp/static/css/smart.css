@@ -1,0 +1,24 @@
+html {
+	background-color: #303030;
+	color: #fff;
+	font-family: Arial, Verdana, sans-serif;
+	padding: 10px;
+}
+
+div {
+
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+.flex-container > div {
+	width: 400px; /* Ширина блока */
+	height: 300px;
+	padding: 5px; /* Поля вокруг текста */
+	margin: 15px;
+	background-color: #505050;
+}
