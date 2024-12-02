@@ -22,3 +22,6 @@ class Record(models.Model):
 
     def __str__(self):
         return str(self.datetime)
+
+    def get_states(self):
+        return ', '.join([state.name for state in self.states.all()])
