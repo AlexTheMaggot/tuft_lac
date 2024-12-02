@@ -4,6 +4,7 @@ from .models import *
 
 class RecordAdmin(admin.ModelAdmin):
     list_display = ['machine', 'get_states', 'datetime']
+    list_filter = ['machine', 'datetime', 'states']
 
 
 admin.site.register(Machine)
