@@ -35,7 +35,7 @@
                                     Время работы
                                 </td>
                                 <td>
-                                    -
+                                    {{ machine.worktime }} ч.
                                 </td>
                             </tr>
                             <tr class="tr">
@@ -43,7 +43,7 @@
                                     Время простоя
                                 </td>
                                 <td>
-                                    -
+                                    {{ machine.freetime }} ч.
                                 </td>
                             </tr>
                             <tr class="tr">
@@ -51,7 +51,7 @@
                                     Диапазон
                                 </td>
                                 <td>
-                                    -
+                                    1 мес.
                                 </td>
                             </tr>
                             <tr class="tr">
@@ -59,16 +59,17 @@
                                     Событий
                                 </td>
                                 <td>
-                                    -
+                                    {{ machine.count }}
                                 </td>
                             </tr>
                         </table>
                         Эффективность
-                        <div class="graph">
-                            <svg version="1.1" id="layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 170 170" style="enable-background:new 0 0 170 170;" xml:space="preserve">
-                                <path class="st0" d="M84.4,44.6c0-0.2,0-0.3,0-0.4c0-0.2,0-0.4,0-0.6"/>
-                                <text x="39" y="50" font-size="16px" fill="#fff" >-</text>
-                            </svg>
+                        <div class="chart">
+                            <div class="chart__filled"></div>
+                            <div class="chart__filled"></div>
+                            <div class="chart__clear"></div>
+                            <div class="chart__clear"></div>
+                            <div class="chart__filled-mask"></div>
                         </div>
                     </div>
                 </div>
