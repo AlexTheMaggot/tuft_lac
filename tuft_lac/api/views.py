@@ -13,11 +13,13 @@ def index(request):
         return HttpResponseBadRequest(content='Invalid JSON')
     if 'name' in data.keys() and 'state' in data.keys():
         try:
-            record = Record.objects.create(machine=Machine.objects.get(name=data['name']))
-            states = []
-            for i in data['state']:
-                record.states.add(State.objects.get(name=i))
-            record.save()
+            last = Record.objects.filter(machine_id=Machine.objects.get(name=data['name'])).last()
+            if not last or {i.name for i in last.states.all()} != set(data['state']):
+                record = Record.objects.create(machine=Machine.objects.get(name=data['name']))
+                states = []
+                for i in data['state']:
+                    record.states.add(State.objects.get(name=i))
+                record.save()
             return JsonResponse({'result': 'Success'})
         except ObjectDoesNotExist:
             return HttpResponseBadRequest(content='Wrong name or state')
