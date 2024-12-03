@@ -66,10 +66,15 @@
                         Эффективность
                         <div class="chart">
                             <div class="chart__filled"></div>
-                            <div class="chart__filled"></div>
-                            <div class="chart__clear"></div>
-                            <div class="chart__clear"></div>
-                            <div class="chart__filled-mask"></div>
+                            {% if machine.productivity > 50 %}
+                                <div style="transform: rotate(calc(({{ machine.productivity }}*180deg/50) - 180deg));" class="chart__filled"></div>
+                            {% endif %}
+                            {% if machine.productivity < 50 %}
+                                <div style="transform: rotate(calc({{ machine.productivity }}*180deg/50));" class="chart__clear"></div>
+                            {% endif %}
+                            <div class="chart__filled-mask">
+                                <p>{{ machine.productivity }}%</p>
+                            </div>
                         </div>
                     </div>
                 </div>
