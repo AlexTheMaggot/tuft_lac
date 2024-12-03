@@ -19,6 +19,7 @@ class Record(models.Model):
     machine = models.ForeignKey(Machine, on_delete=models.CASCADE, related_name='records')
     states = models.ManyToManyField(State)
     datetime = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(null=True, auto_now=True)
 
     def __str__(self):
         return str(self.datetime)
