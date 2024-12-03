@@ -20,6 +20,8 @@ def index(request):
                 for i in data['state']:
                     record.states.add(State.objects.get(name=i))
                 record.save()
+            elif {i.name for i in last.states.all()} == set(data['state']):
+                last.save()
             return JsonResponse({'result': 'Success'})
         except ObjectDoesNotExist:
             return HttpResponseBadRequest(content='Wrong name or state')
