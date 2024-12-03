@@ -1,7 +1,7 @@
 import datetime
 from django.shortcuts import render
-from api.models import Machine
-
+from api.models import Machine, State
+from django.db.models import Count
 
 def index(request):
     template = 'mainapp/index.html'
@@ -42,11 +42,12 @@ def index(request):
                 pic = 'RYG'
             elif {i.name for i in m.records.last().states.all()} == {'yellow', 'green'}:
                 pic = 'YG'
+        count = m.records.annotate(state_count=Count('states')).filter(state_count=1, states__name='red').count()
         result.append({
             'id': m.id,
             'worktime': worktime.seconds // 3600,
             'freetime': freetime.seconds // 3600,
-            'count': m.records.count(),
+            'count': count,
             'productivity': productivity,
             'connected': connected,
             'pic': pic,
