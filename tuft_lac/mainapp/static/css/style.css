@@ -79,10 +79,10 @@ p {
 	background: #57BAEA;
     width: 128px;
     height: 64px;
-    border-radius: 100px 100px 0 0;
-    transform-origin: bottom center;
+    border-radius: 0 0 100px 100px;
+    transform-origin: top center;
     position: absolute;
-    top: 1px;
+    bottom: 1px;
     left: 1px;
 }
 
@@ -94,14 +94,17 @@ p {
     top: 10px;
     left: 10px;
     border-radius: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
 .chart__clear {
     background: #505050;
     width: 130px;
     height: 65px;
-    border-radius: 100px 100px 0 0;
-    transform-origin: bottom center;
+    border-radius: 0 0 100px 100px;
+    transform-origin: top center;
     position: absolute;
-    top: 0;
+    bottom: 0;
 }
