@@ -1,0 +1,75 @@
+.parent-table {
+	width: 100%;
+}
+
+.parent-child {
+	border: solid 15px #fff;
+	margin: auto;
+	width: 650px; /* костыль */
+}
+
+.table {
+	border-collapse: collapse;
+	padding: 0;
+	background-color: white;
+}
+
+body {
+	font-size: 10pt;
+	font-family: Verdana, Geneva, sans-serif;
+	background-color: #e5e5e5;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.name {
+	font-size: 10pt;
+}
+
+.position {
+	font-size: 6pt;
+	color: #757575;
+}
+
+tr {
+	height: 30px;
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+td {
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+.row {
+	background-color: #fff;
+}
+
+.rowbl {
+	background-color: #d5e8ff;
+}
+
+.cell1 {
+	width: 350px;
+	padding-left: 15px;
+	border-right: dotted 2px;
+	border-color: #b0b0b0;
+	vertical-align: top;
+}
+
+.cell2 {
+	width: 100px;
+	text-align: center;
+	border-right: dotted 2px;
+	border-color: #b0b0b0;
+}
+
+.cell3 {
+	text-align: center;
+	width: 200px;
+}
+
