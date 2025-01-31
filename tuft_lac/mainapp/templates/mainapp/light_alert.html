@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Мониторинг световой индикации</title>
+		<link rel="stylesheet" href="{% static 'css/smart.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="shortcut icon" href="{% static 'img/favicon.png' %}" type="image/x-icon" />
+	</head>
+	<body>
+		<div class="flex-container">
+			{% for machine in machines %}
+                <div class="block">
+                        <p>
+                            СТАНОК №{{ machine.id }}
+                        </p>
+                    <div class="image">
+                        <p>
+                            {% if not machine.connected %}
+                                <img src="{% static 'img/NC.png' %}" height="200" alt="Красный, жёлтый">
+                            {% elif machine.pic == 'IDL' %}
+                                <img src="{% static 'img/IDL.png' %}" height="200" alt="Красный, жёлтый">
+                            {% elif machine.pic == 'R' %}
+                                <img src="{% static 'img/R.gif' %}" height="200" alt="Красный, жёлтый">
+                            {% elif machine.pic == 'RG' %}
+                                <img src="{% static 'img/RG.gif' %}" height="200" alt="Красный, жёлтый">
+                            {% elif machine.pic == 'RY' %}
+                                <img src="{% static 'img/RY.gif' %}" height="200" alt="Красный, жёлтый">
+                            {% elif machine.pic == 'RYG' %}
+                                <img src="{% static 'img/RYG.gif' %}" height="200" alt="Красный, жёлтый">
+                            {% elif machine.pic == 'YG' %}
+                                <img src="{% static 'img/YG.gif' %}" height="200" alt="Красный, жёлтый">
+                            {% else %}
+                                <img src="{% static 'img/NC.png' %}" height="200" alt="Красный, жёлтый">
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="text">
+                        <table class="table">
+                            <tr class="tr">
+                                <td>
+                                    Статус
+                                </td>
+                                {% if not machine.connected %}
+                                    <td>Нет соединения</td>
+                                {% elif machine.pic == 'IDL' %}
+                                    <td>В работе</td>
+                                {% elif machine.pic == 'R' or machine.pic == 'RY' %}
+                                    <td>Остановлен</td>
+                                {% elif machine.pic == 'RG' %}
+                                    <td>Обслуживание</td>
+                                {% else %}
+                                    <td>Ошибка</td>
+                                {% endif %}
+                            </tr>
+                            <tr class="tr">
+                                <td>
+                                    Время работы
+                                </td>
+                                <td>
+                                    {{ machine.worktime }} ч.
+                                </td>
+                            </tr>
+                            <tr class="tr">
+                                <td>
+                                    Время простоя
+                                </td>
+                                <td>
+                                    {{ machine.freetime }} ч.
+                                </td>
+                            </tr>
+                            <tr class="tr">
+                                <td>
+                                    Диапазон
+                                </td>
+                                <td>
+                                    1 мес.
+                                </td>
+                            </tr>
+                            <tr class="tr">
+                                <td>
+                                    Событий
+                                </td>
+                                <td>
+                                    {{ machine.count }}
+                                </td>
+                            </tr>
+                        </table>
+                        Эффективность
+                        <div class="chart">
+                            <div class="chart__filled"></div>
+                            {% if machine.productivity > 50 %}
+                                <div style="transform: rotate(calc(({{ machine.productivity }}*180deg/50) - 180deg));" class="chart__filled"></div>
+                            {% endif %}
+                            {% if machine.productivity < 50 %}
+                                <div style="transform: rotate(calc({{ machine.productivity }}*180deg/50));" class="chart__clear"></div>
+                            {% endif %}
+                            <div class="chart__filled-mask">
+                                <p>{{ machine.productivity }}%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+		</div>
+        <div class="copyright">Developed by Dmitry Agapkin · Powered by AleTheMaggot</div>
+        <script src="{% static 'js/script.js' %}"></script>
+	</body>
+</html>
