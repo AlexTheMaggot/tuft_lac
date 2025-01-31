@@ -4,12 +4,12 @@ from api.models import Machine, State
 from django.utils.timezone import now
 
 
-def index(request):
+def light_alert(request):
 
     def get_states(queryset):
         return {ii.name for ii in queryset.states.all()}
 
-    template = 'mainapp/index.html'
+    template = 'mainapp/light_alert.html'
     result = []
     for m in Machine.objects.all():
         worktime = 0
@@ -95,3 +95,14 @@ def index(request):
         'machines': result,
     }
     return render(request, template, context)
+
+
+def index(request):
+    template = 'mainapp/index.html'
+    return render(request, template)
+
+
+
+def phone_number(request):
+    template = 'mainapp/phone_number.html'
+    return render(request, template)
