@@ -35,7 +35,7 @@ while True:
             first_record = records[0]
             last_record_before_start = m.records.filter(datetime__lt=month_start).order_by("-datetime").first()
 
-            last_states = get_states(last_record_before_start) if last_record_before_start else None
+            last_states = get_states(last_record_before_start) if last_record_before_start else {"red", }
 
             if not last_states or last_states == {"yellow", "green"}:
                 worktime += first_record.datetime.timestamp() - month_start.timestamp()
